@@ -3,6 +3,16 @@ import io from 'socket.io-client';
 
 const DOWNSAMPLING_WORKER = './downsampling_worker.js';
 
+const URLS = {
+  prod: 'http://139.59.74.127:4000',
+  local: 'http://localhost:4000',
+}
+
+const env = "prod"
+// const env = "local"
+
+const url = URLS[env]
+
 class App extends Component {
 	constructor(props) {
 		super(props);
@@ -18,7 +28,7 @@ class App extends Component {
 	componentDidMount() {
 		let recognitionCount = 0;
 		
-		this.socket = io.connect('http://localhost:4000', {});
+		this.socket = io.connect(url, {});
 		
 		this.socket.on('connect', () => {
 			console.log('socket connected');
