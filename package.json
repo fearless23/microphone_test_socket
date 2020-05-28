@@ -1,0 +1,13 @@
+{
+  "name": "web-microphone-websocket-backend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "deepspeech": "^0.7.1",
+    "node-vad": "^1.1.4",
+    "socket.io": "^2.3.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}
