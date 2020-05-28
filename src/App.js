@@ -9,7 +9,7 @@ const URLS = {
   local: 'http://localhost:4000',
 };
 
-const env = "prod"
+const env = 'prod';
 // const env = 'local';
 
 const url = URLS[env];
@@ -152,15 +152,26 @@ class App extends Component {
       console.error('recording failure', e);
     };
 
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      navigator.mediaDevices
-        .getUserMedia({
-          video: false,
-          audio: true,
-        })
-        .then(success)
-        .catch(fail);
-    } else {
+    // if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    //   navigator.mediaDevices
+    //     .getUserMedia({
+    //       video: false,
+    //       audio: true,
+    //     })
+    //     .then(success)
+    //     .catch(fail);
+    // } else {
+    //   navigator.getUserMedia(
+    //     {
+    //       video: false,
+    //       audio: true,
+    //     },
+    //     success,
+    //     fail,
+    //   );
+    // }
+
+    if (typeof navigator.mediaDevices.getUserMedia === 'undefined') {
       navigator.getUserMedia(
         {
           video: false,
@@ -169,6 +180,14 @@ class App extends Component {
         success,
         fail,
       );
+    } else {
+      navigator.mediaDevices
+        .getUserMedia({
+          video: false,
+          audio: true,
+        })
+        .then(success)
+        .catch(fail);
     }
   }
 
