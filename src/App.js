@@ -9,8 +9,8 @@ const URLS = {
   local: 'http://localhost:4000',
 };
 
-// const env = "prod"
-const env = 'local';
+const env = "prod"
+// const env = 'local';
 
 const url = URLS[env];
 
